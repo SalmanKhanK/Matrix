@@ -1,41 +1,26 @@
 
-var matLength=document.getElementById("matrixLength")
 var matCalType=document.getElementById("matrixCalType") 
 var FirstMatRow=document.getElementById("FirstMatRow");
 var FirstMatCol=document.getElementById("FirstMatCol");
 var result=document.getElementById("result");
+// 
 var inputdeterminant;
 var inputtranspose;
 var inputinverse;
 var inputAddscalar;
 var inputMulMatWithScalar;
 // 
-var inputMulFisrtMatWithSecond;
-var inputMulSecondMatWithFirst;
-var inputAddMatrix;
-var inputSubFirstmatWithSec;
-var inputSubSecondMatWithFirst;
-// 
 var FirstMatRow;
 var FirstMatCol;
 // 
-var list=[matLength]
+var list=[matCalType]
 list.forEach((e,index)=>{
     e.addEventListener('click',()=> {
-            if(e.value==="1"){
                   inputdeterminant = matCalType[1].textContent="Find determinant of the matrix"
                   inputtranspose = matCalType[2].textContent="Find transpose of the matrix"
                   inputinverse  = matCalType[3].textContent="Find the inverse of the matrix"
                   inputAddscalar = matCalType[4].textContent="Add a scalar to matrix"
                   inputMulMatWithScalar = matCalType[5].textContent="Multiply the matrix with a scalar"  
-             }
-            if(e.value==="2"){
-                   inputMulFisrtMatWithSecond= matCalType[1].textContent="Multiply the first matrix with the second"
-                   inputMulSecondMatWithFirst= matCalType[2].textContent="Multiply the second matrix with first"
-                   inputAddMatrix= matCalType[3].textContent="Add both matrices"
-                   inputSubFirstmatWithSec= matCalType[4].textContent="Subtract the first matrix from second" 
-                   inputSubSecondMatWithFirst= matCalType[5].textContent="Subtract the second matrix from the first" 
-               }
         });
       
        
@@ -78,76 +63,109 @@ function cal(){
      })
      console.log(matrixExecuteValues,"81")
      while (matrixExecuteValues.length) {
-      const chunk = matrixExecuteValues.splice(0,FirstMatRow.value);
+      const chunk = matrixExecuteValues.splice(0,FirstMatCol.value);
       console.log(chunk,"Chunkkkk")
       chunkList.push(chunk);
   }
         if(matCalType.value=="Find determinant of the matrix"){
-            console.log(math.det(chunkList))
+          try{
             var determinant=math.det(chunkList)
+            console.log(determinant,"Result")
             document.getElementById("result").innerHTML=determinant
+          }
+          catch{
+            alert("Dimension mismatch")
+          }
         }
         if(matCalType.value=="Find transpose of the matrix"){
-           console.log(math.transpose(chunkList))
+          try{
            var transpose=math.transpose(chunkList)
-           document.getElementById("result").innerHTML=transpose
+           console.log(transpose);
+           printArray(transpose)
+          }
+          catch{
+            alert("Dimension mismatch")
+          }
         }
         if(matCalType.value=="Find the inverse of the matrix"){
-           console.log(math.inv(chunkList))
-           var inverse=math.inv(chunkList);
-           document.getElementById("result").innerHTML=inverse
+           try{
+            var inverse=math.inv(chunkList);
+            printArray(inverse)
+           }
+           catch{
+            alert("Dimension mismatch")
+           }
+           
+          
         }
         if(matCalType.value=="Add a scalar to matrix"){
+          try{
              if(FirstMatRow.value==2){
                console.log(math.add([[2,0],[0,2]],chunkList))
                var add2=math.add([[2,0],[0,2]],chunkList);
-               document.getElementById("result").innerHTML=add2;
+              printArray(add2)
                
              }
              if(FirstMatRow.value==3){
               console.log(math.add([[3,0,0],[0,3,0],[0,0,3]],chunkList))
               var add3=math.add([[3,0,0],[0,3,0],[0,0,3]],chunkList);
-              document.getElementById("result").innerHTML=add3;
+              printArray(add3)
             } 
             if(FirstMatRow.value==4){
               console.log(math.add([[4,0,0,0],[0,4,0,0],[0,0,4,0],[0,0,0,4]],chunkList))
               var add4=math.add([[4,0,0,0],[0,4,0,0],[0,0,4,0],[0,0,0,4]],chunkList)
-              document.getElementById("result").innerHTML=add4;
+              printArray(add4)
             }  
             if(FirstMatRow.value==5){
               console.log(math.add([[5,0,0,0,0],[0,5,0,0,0],[0,0,5,0,0],[0,0,0,5,0],[0,0,0,0,5]],chunkList))
               var add5= math.add([[5,0,0,0,0],[0,5,0,0,0],[0,0,5,0,0],[0,0,0,5,0],[0,0,0,0,5]],chunkList)
-              document.getElementById("result").innerHTML=add5;
+              printArray(add5)
             }
+          }
+          catch{
+            alert("Dimension mismatch")
+          }
         }
         if(matCalType.value=="Multiply the matrix with a scalar"){
+          try{
           if(FirstMatRow.value==2){
             console.log(math.multiply([[2,0],[0,2]],chunkList))
             var mul2=math.multiply([[2,0],[0,2]],chunkList)
-            document.getElementById("result").innerHTML=mul2;
+            printArray(mul2)
 
           }
           if(FirstMatRow.value==3){
            console.log(math.multiply([[3,0,0],[0,3,0],[0,0,3]],chunkList))
            var mul3=math.multiply([[3,0,0],[0,3,0],[0,0,3]],chunkList)
-           document.getElementById("result").innerHTML=mul3;
+           printArray(mul3)
          } 
           if(FirstMatRow.value==4){
            console.log(math.multiply([[4,0,0,0],[0,4,0,0],[0,0,4,0],[0,0,0,4]],chunkList))
            var mul4=math.multiply([[4,0,0,0],[0,4,0,0],[0,0,4,0],[0,0,0,4]],chunkList)
-           document.getElementById("result").innerHTML=mul4;
+           printArray(mul4)
          }  
           if(FirstMatRow.value==5){
            console.log(math.multiply([[5,0,0,0,0],[0,5,0,0,0],[0,0,5,0,0],[0,0,0,5,0],[0,0,0,0,5]],chunkList))
            var mul5=math.multiply([[5,0,0,0,0],[0,5,0,0,0],[0,0,5,0,0],[0,0,0,5,0],[0,0,0,0,5]],chunkList)
-           document.getElementById("result").innerHTML=mul5;
+           printArray(mul5)
          }
+        }
+        catch{
+          alert("Dimension mismatch")
+        }
      }
    };
    document.body.appendChild(button);
 
 }
 
-
+function printArray(inp){
+  inp.forEach((i,index)=>{
+    var inp = document.createElement("p");
+    inp.textContent=i
+    console.log(inp)
+    document.body.appendChild(inp);
+})
+}
 
 

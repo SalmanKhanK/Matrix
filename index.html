@@ -1,50 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/7.5.1/math.min.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-  <label for="matrix">Select Matrix length:</label>
-  <select name="matrix" id="matrixLength">
-    <option value="Select Matrix Length">Select Matrix Length</option>
-    <option value="1" id="matOpt1">1</option>
-    <option value="2" id="matOpt2">2</option>
-  </select>
-  <br/>
-  <br/>
-  <label>
-    Select Row Of First Matrix:
-    <input type="number" id="FirstMatRow">
-  </label>
-  <br/>
-  <br/>
-  <label>
-    Select Column Of First Matrix:
-    <input type="number" id="FirstMatCol">
-  </label>
-  <br/>
-  <br/>
-  <label for="matrix">Select Matrix Calculation Type:</label>
-  <select name="matrix" id="matrixCalType">
-    <option value="Select Matrix Length">Select Matrix Length</option>
-    <option  id="matOpt2"></option>
-    <option  id="matOpt2"></option>
-    <option  id="matOpt2"></option>
-    <option  id="matOpt2"></option>
-    <option  id="matOpt2"></option>
-  </select>
-  <br/>
-  <br/>
-    <button onclick="cal()">Calculate</button>
-    <div name="matrix" id="result">
-      <p id="res"></p>
-      <p id="res"></p>
-      <p id="res"></p>
-      <p id="res"></p>
-      <p id="res"></p>
-    </div>
-    <script  src="./index.js" ></script>
- 
+  <a href="./input1.html">Click here for the following type of calculation</a>
+  <p>
+    Find determinant of the matrix <br/>
+Find transpose of the matrix <br/>
+Find the inverse of the matrix. <br/>
+Add a scalar to matrix <br/>
+Multiply the matrix with a scalar <br/>
+  </p>
+  <a href="./input2.html">Click here for the following type of calculation</a>
+  <p>
+    possible option to go with: <br/>
+Multiply the first matrix with the second. <br/>
+Multiply the second matrix with first. <br/>
+Add both matrices <br/>
+Subtract the first matrix from second <br/>
+Subtract the second matrix from the first <br/>
+  </p>
 </body>
 </html>
